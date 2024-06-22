@@ -36,3 +36,10 @@ barChart.on("mouseover", function() {
     .on("mouseout", function() {
         d3.select(this).select("rect").style("fill", "steelblue");
     });
+
+barChart.append("text")
+    .attr("class", "label")
+    .attr("x", d => xScale(d) + 5)
+    .attr("y", height / 2)
+    .attr("dy", ".35em")
+    .text(d => d);
