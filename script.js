@@ -20,3 +20,19 @@ const barChart = svg.selectAll("g")
     .enter()
     .append("g")
     .attr("transform", (d, i) => `translate(0, ${i * (height + margin)})`);
+
+barChart.append("rect")
+    .attr("class", "bar")
+    .attr("width", 0)
+    .attr("height", height)
+    .attr("fill", "steelblue")
+    .transition()
+    .duration(800)
+    .attr("width", d => xScale(d));
+
+barChart.on("mouseover", function() {
+        d3.select(this).select("rect").style("fill", "orange");
+    })
+    .on("mouseout", function() {
+        d3.select(this).select("rect").style("fill", "steelblue");
+    });
