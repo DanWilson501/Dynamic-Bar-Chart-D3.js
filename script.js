@@ -14,3 +14,9 @@ const svg = d3.select("#chart")
 const xScale = d3.scaleLinear()
     .domain([0, d3.max(data)])
     .range([50, svgWidth - 50]);
+
+const barChart = svg.selectAll("g")
+    .data(data)
+    .enter()
+    .append("g")
+    .attr("transform", (d, i) => `translate(0, ${i * (height + margin)})`);
